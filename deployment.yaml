@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+  labels:
+    app : my-k8s-application
+spec:
+  selector:
+    matchLabels:
+      project: kapp
+  template:
+    metadata:
+      labels:
+        project: kapp
+    spec:
+      containers:
+        - name: kapp-web
+          image: virus69virus69/my-web-app:1.0
+          ports:
+            - containerPort: 80
+          imagePullPolicy: IfNotPresent

@@ -20,6 +20,12 @@ spec:
           ports:
             - containerPort: 80
           imagePullPolicy: IfNotPresent
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 20
+            periodSeconds: 10
           livenessProbe:
             tcpSocket:
               port: 5000
